@@ -13,9 +13,7 @@ def fib_generator(n):
             i += 1
 
 def fib_list(n):
-    list = []
-    for i in fib_generator(n):
-        list.append(i)
+    list = [x for x in fib_generator(n)]
     print(list)
 
 fib_list(3)
