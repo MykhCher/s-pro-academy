@@ -15,5 +15,3 @@ def fib_generator(n):
 def fib_list(n):
     list = [x for x in fib_generator(n)]
     print(list)
-
-fib_list(3)
