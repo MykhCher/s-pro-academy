@@ -5,11 +5,13 @@ class FormulaError(Exception):
 
 def calc(x):
     x = x.split(" ")
+    if len(x) != 3:
+        raise FormulaError("There are more/less than 3 items given")
     try:
          x[0] = float(x[0])
          x[2] = float(x[2])
     except ValueError:
-        raise FormulaError
+        raise FormulaError("There are some non-number value given")
     if x[1] == "+":
         x = x[0] + x[2]
     elif x[1] == "-":
@@ -17,7 +19,10 @@ def calc(x):
     elif x[1] == "*":
         x = x[0] * x[2]
     elif x[1] == "/":
-        x = x[0] / x[2]
+        try:
+            x = x[0] / x[2]
+        except ZeroDivisionError:
+            x = "Cannot divide by zero"
     else:
-        raise FormulaError
+        raise FormulaError("Unknown operation given, expected '+, -, *, /'")
     return x
