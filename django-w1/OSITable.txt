@@ -1,0 +1,7 @@
+7. Application layer
+6. Presentatiom layer
+5. Session layer
+4. Transport layer
+3. Network layer
+2. Data link layer
+1. Physical layer
