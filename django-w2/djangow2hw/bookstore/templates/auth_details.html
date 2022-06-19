@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+    <h3>{{first_name}} {{last_name}} info</h3>
+    <p>First name: {{first_name}}</p>
+    <p>Last name: {{last_name}}</p>
+    <p>Age: {{age}}</p> 
+    <a href="{% url 'book_authlist' id %}">All books by {{first_name}} {{last_name}}</a>
+{% endblock content %}
