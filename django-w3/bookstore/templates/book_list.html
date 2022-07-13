@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bookstore</title>
+</head>
+<body>
+    <form action="", method="get">
+        <input type="text" name="search">
+        <input type="submit" value="Search">
+    </form>
+    
+    <form action="" method="post" style="float:right">
+        {% csrf_token %}
+        {{ book_form.as_p }}
+        <input type="submit", value="Add a book"    />
+        {% for book in books %}
+    </form>
+    <div>
+        <h3>{{book.title|upper}}</h2>
+        <p>{{book.description|slice:35}}</p>
+        <p>{{book.author.id}}</p>
+        <a href="{% url 'book_detail' book.id %}">Details</a>
+    </div>
+    {% endfor %}
+</body>
+</html>
