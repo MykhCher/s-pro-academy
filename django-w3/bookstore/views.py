@@ -31,4 +31,12 @@ def book_authlist(request, auth_id):
         if i.author.pk == auth_id:
             books.append(i)
     return render(request, 'books_authlist.html', context={'books' : books})
-    
+
+def book_creation(request):
+    bookz=Books.objects.all()
+    if request.method=='POST':
+        form=CreateBook(request.POST)
+        if form.is_valid:
+            form.save()
+    context = {'book_form':CreateBook, bookz:'bookz'}
+    return render(request, 'book_creation.html', context=context)
