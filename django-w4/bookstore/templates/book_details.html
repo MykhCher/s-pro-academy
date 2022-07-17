@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div>
+    <h3>{{book.title|upper}}</h3>
+</div>
+<div>
+    <p>{{book.description}}</p>
+    <p>Year of release: {{book.released_year}}</p>
+</div>
+
+<a href={% url 'auth_detail' book.author.id %}>Author details</a>
+
+{% if not book.reviews.all %}
+    <p style='font-style: italic'>There is no reviews yet...</p>
+    
+{% else %}
+    <h3>Reviews for this book</h3>
+    {% for review in book.reviews.all %}
+        <p><strong>{{review.name}}:</strong></p>
+        <p>{{review.body}}</p>    
+        <hr/>
+    {% endfor %}
+
+{% endif %}
+
+{% if user.is_authenticated %}
+<br/>
+<div>
+    <form action='' method='post'>{% csrf_token %}
+        <input type="text" name="review">
+        <input type="submit" value="Leave a review">
+    </form>
+</div>
+
+{% else %}
+<p style="font-style: italic">Login to leave a review</p>
+{% endif %}
+
+{% endblock content %}

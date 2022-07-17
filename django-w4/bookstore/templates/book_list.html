@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bookstore</title>
+</head>
+<body>
+    <div style='float:right'>
+        {% if user.is_authenticated %}
+            <a href={% url 'logout' %}>logout {{user.username}}</a>
+        {% else %}
+            <a href={% url 'register' %}>register</a>
+            <a href={% url 'login' %}>login</a>
+        {% endif %}
+    </div>
+    <form action="", method="get">
+        <input type="text" name="search">
+        <input type="submit" value="Search">
+    </form>
+    <a href="{% url 'book_creation' %}" style="float:right">Create a book</a>
+    {% for book in books %}
+    <div>
+        <h3>{{book.title|upper}}</h2>
+        <p>{{book.description|slice:35}}</p>
+        <p>{{book.author.id}}</p>
+        <a href="{% url 'book_detail' book.id %}">Details</a>
+    </div>
+    {% endfor %}
+</body>
+</html>

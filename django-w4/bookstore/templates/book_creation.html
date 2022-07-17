@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Book creation</title>
+</head>
+<body>
+    <form action="http://127.0.0.1:8000/bookstore/" method="post">
+        {% csrf_token %}
+        {{ book_form.as_p }}
+        <input type="submit", value="Add a book"    />
+    </form>
+</body>
+</html>

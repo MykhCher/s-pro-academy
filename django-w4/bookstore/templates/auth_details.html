@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+    <h3>{{author.first_name}} {{author.last_name}} info</h3>
+    <p>First name: {{author.first_name}}</p>
+    <p>Last name: {{author.last_name}}</p>
+    <p>Age: {{author.age}}</p> 
+    <a href="{% url 'book_authlist' author.id %}">All books by {{author.first_name}} {{author.last_name}}</a>
+{% endblock content %}
